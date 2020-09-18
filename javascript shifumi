@@ -1,0 +1,23 @@
+var nom, actionUser, ordinateur, signe_ordinateur;
+
+function mathRandomInt(a, b) {
+  if (a > b) {
+    // Swap a and b to ensure a is smaller.
+    var c = a;
+    a = b;
+    b = c;
+  }
+  return Math.floor(Math.random() * (b - a + 1) + a);
+}
+
+
+nom = window.prompt('veuillez saisir votre nom svp ');
+actionUser = Number(window.prompt('1(pierre),2(feuille) ou 3(ciseaux)'));
+ordinateur = mathRandomInt(1, 3);
+if (actionUser == ordinateur) {
+  window.alert('égalité');
+} else if (signe_ordinateur == 1 && nom == 3 || signe_ordinateur == 3 && nom == 2 || signe_ordinateur == 2 && nom == 1) {
+  window.alert('l\'ordi gagne');
+} else if (signe_ordinateur == 1 && nom == 2 || signe_ordinateur == 3 && nom == 1 || signe_ordinateur == 2 && nom == 3) {
+  window.alert(String(nom) + 'a gagné ');
+}

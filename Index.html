@@ -8,6 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Shifumi</title>
     <link rel="stylesheet" href="style.css">
+    <script src="script.js"></script>
 </head>
 
 <body>
@@ -17,34 +18,52 @@
     <div id="cadre">
         <div id="led-box">
             <div class="led">
-                
-               <div class="led-green led-gauche" id="green">
+
+                <div class="led-green led-gauche" id="green">
                 </div>
 
-                <div class="led-orange led-gauche">
+                <div class="led-orange led-gauche" id="orange">
                 </div>
 
                 <div class="led-red led-gauche">
                 </div>
-                <div class="led-green led-droite">
+                <div class="led-green led-droite" id="green2">
                 </div>
 
-                <div class="led-orange led-droite">
+                <div class="led-orange led-droite" id="orange2">
                 </div>
 
-                <div class="led-red led-droite" id="red">
+                <div class="led-red led-droite">
                 </div>
             </div>
 
-          
+
         </div>
-
+        <div class="affichage">
+            <div id="user" class="box2"></div>
+            <div id="vs" class="box2"></div>
+            <!--fonction onclick pour le champ-->
+            <div onclick="champ()" id="box" class="box2">
+                <p>START</p>
+            </div>
+            <div id="ordi" class="box2"></div>
+            <div id="utilisateur-text">
+                <p id="nom-champ">Utilisateur</p>
+            </div>
+            <div id="ordi-text">
+                <p>I.A</p>
+            </div>
+        </div>
+        <div class="affichage border-black">
+            <!--fonction onclick pour le shifumi pierre-->
+            <div onclick="shifumi_pierre()" id="pierre" class="box2"></div>
+            <!--fonction onclick pour le shifumi feuille-->
+            <div onclick="shifumi_feuille()" id="feuille" class="box2"></div>
+            <div onclick="shifumi_ciseaux()" id="ciseaux" class="box2"></div>
+        </div>
     </div>
 
-    </div>
 
-
-    </div>
 
 
 </body>
