@@ -8,44 +8,52 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Shifumi</title>
     <link rel="stylesheet" href="style.css">
-    <script src="script.js"></script>
+    <script src="shifumi.js"></script>
 </head>
 
 <body>
 
 
-    <h1>Chifoumi</h1>
+    <div id="foumichi">
+        <h1>Foumichi</h1>
+    </div>
     <div id="cadre">
-        <div id="led-box">
-            <div class="led">
-
-                <div class="led-green led-gauche" id="green">
+        <div class="container-led">
+            <div id="led-box-user">
+                <!--led utilisateur-->
+                <div class="led light" id="led-g1">
                 </div>
 
-                <div class="led-orange led-gauche" id="orange">
+                <div class="led light" id="led-g2">
                 </div>
 
-                <div class="led-red led-gauche">
-                </div>
-                <div class="led-green led-droite" id="green2">
-                </div>
-
-                <div class="led-orange led-droite" id="orange2">
-                </div>
-
-                <div class="led-red led-droite">
+                <div class="led light" id="led-g3">
                 </div>
             </div>
+            <!--led I.A-->
+            <div id="led-box-ia">
+                <div class="led light" id="led-d1">
+                </div>
 
+                <div class="led light" id="led-d2">
+                </div>
 
+                <div class="led light" id="led-d3">
+                </div>
+            </div>
         </div>
+
         <div class="affichage">
+            <!--affichage user-->
             <div id="user" class="box2"></div>
+            <!--box pour versus-->
             <div id="vs" class="box2"></div>
             <!--fonction onclick pour le champ-->
-            <div onclick="champ()" id="box" class="box2">
-                <p>START</p>
-            </div>
+                <div onclick="champ()" id="box" class="box2">
+                    <p>START</p>
+                    <div onclick="window.location.reload()" id="reset"></div>
+                </div>
+            <!--affichage ordi-->
             <div id="ordi" class="box2"></div>
             <div id="utilisateur-text">
                 <p id="nom-champ">Utilisateur</p>
@@ -54,11 +62,12 @@
                 <p>I.A</p>
             </div>
         </div>
-        <div class="affichage border-black">
+             <div class="affichage border-black">
             <!--fonction onclick pour le shifumi pierre-->
             <div onclick="shifumi_pierre()" id="pierre" class="box2"></div>
             <!--fonction onclick pour le shifumi feuille-->
             <div onclick="shifumi_feuille()" id="feuille" class="box2"></div>
+            <!--fonction onclick pour le shifumi ciseaux-->
             <div onclick="shifumi_ciseaux()" id="ciseaux" class="box2"></div>
         </div>
     </div>
