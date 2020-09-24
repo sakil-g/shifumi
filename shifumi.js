@@ -24,6 +24,29 @@ function champ() {
 }
 
 
+function choixOrdi(){
+    ordinateur = mathRandomInt(1, 3); 
+    if (ordinateur == 1) {
+        ordi = document.getElementById("ordi")
+        ordi.style.backgroundImage = "url(mountain-rock-oJVXoX5-600.jpg)";
+        ordi.style.backgroundSize = "100%";
+        ordi.style.backgroundPosition = "1px -30px"; 
+    }
+    if (ordinateur == 2) {
+        ordi = document.getElementById("ordi")
+        ordi.style.backgroundImage = "url(feuille.jpg)";
+        ordi.style.backgroundSize = "100%";
+        ordi.style.backgroundPosition = "1px -41px";
+    }
+    if (ordinateur == 3) {
+        ordi = document.getElementById("ordi")
+        ordi.style.backgroundImage = "url(scissors.jpg)";
+        ordi.style.backgroundSize = "67%";
+        ordi.style.backgroundPosition = "63px -4px";
+        ordi.style.backgroundRepeat = "no-repeat";
+    }
+}
+
 function shifumi_pierre() {
     //cibler id que l'on affecte dans la variable USER
     var user = document.getElementById("user");
@@ -33,29 +56,11 @@ function shifumi_pierre() {
     user.style.backgroundPosition = "1px -30px";
     //definir fonction de user 1
     actionUser = 1 ;
-    //definir fonction ordinateur
-    ordinateur = mathRandomInt(1, 3); 
-    if (ordinateur == 1) {
-        ordi = document.getElementById("ordi")
-        ordi.style.backgroundImage = "url(mountain-rock-oJVXoX5-600.jpg)";
-        ordi.style.backgroundSize = "100%";
-        ordi.style.backgroundPosition = "1px -30px"; 
-    }
-    else if (ordinateur == 2) {
-        ordi = document.getElementById("ordi")
-        ordi.style.backgroundImage = "url(feuille.jpg)";
-        ordi.style.backgroundSize = "100%";
-        ordi.style.backgroundPosition = "1px -41px";
-    }
-    else if (ordinateur == 3) {
-        ordi = document.getElementById("ordi")
-        ordi.style.backgroundImage = "url(scissors.jpg)";
-        ordi.style.backgroundSize = "67%";
-        ordi.style.backgroundPosition = "63px -4px";
-        ordi.style.backgroundRepeat = "no-repeat";
-    }
-     compare();
-    
+
+    //l'ordi choisi
+    choixOrdi();
+    //on compare joueur vs ordi
+    compare();
 }
         
 
@@ -67,29 +72,8 @@ function shifumi_feuille() {
     user.style.backgroundPosition = "0px -41px";
     //attribuer fonction pour user
     actionUser = 2;
-    //attribuer fonction pour ordi
-    ordinateur = mathRandomInt(1, 3); 
-    if (ordinateur == 1) {
-        ordi = document.getElementById("ordi")
-        ordi.style.backgroundImage = "url(mountain-rock-oJVXoX5-600.jpg)";
-        ordi.style.backgroundSize = "100%";
-        ordi.style.backgroundPosition = "1px -30px"; 
-    }
-    else if (ordinateur == 2) {
-        ordi = document.getElementById("ordi")
-        ordi.style.backgroundImage = "url(feuille.jpg)";
-        ordi.style.backgroundSize = "100%";
-        ordi.style.backgroundPosition = "1px -41px";
-    }
-    else if (ordinateur == 3) {
-        ordi = document.getElementById("ordi")
-        ordi.style.backgroundImage = "url(scissors.jpg)";
-        ordi.style.backgroundSize = "67%";
-        ordi.style.backgroundPosition = "63px -4px";
-        ordi.style.backgroundRepeat = "no-repeat";
-    }
-
-     compare();
+    choixOrdi();
+    compare();
 }
 
 function shifumi_ciseaux() {
@@ -101,38 +85,33 @@ function shifumi_ciseaux() {
     user.style.backgroundPosition= "65px 0px";
     //atribuer fonction pour user
     actionUser = 3 ;
-    //attribuer fonction pour ordi
-    ordinateur = mathRandomInt(1, 3); 
-    if (ordinateur == 1) {
-        ordi = document.getElementById("ordi")
-        ordi.style.backgroundImage = "url(mountain-rock-oJVXoX5-600.jpg)";
-        ordi.style.backgroundSize = "100%";
-        ordi.style.backgroundPosition = "1px -30px"; 
-    }
-    else if (ordinateur == 2) {
-        ordi = document.getElementById("ordi")
-        ordi.style.backgroundImage = "url(feuille.jpg)";
-        ordi.style.backgroundSize = "100%";
-        ordi.style.backgroundPosition = "1px -41px";
-    }
-    else if (ordinateur == 3) {
-        ordi = document.getElementById("ordi")
-        ordi.style.backgroundImage = "url(scissors.jpg)";
-        ordi.style.backgroundSize = "67%";
-        ordi.style.backgroundPosition = "63px -4px";
-        ordi.style.backgroundRepeat = "no-repeat"
-    }
+    choixOrdi();
     compare();
 }
 
 //fonction pour comparer shifumi user et ordi 
 function compare() {
+
+    //si egalite
     if (actionUser == ordinateur) {
-        var led = document.getElementById("led-g"+(score1+1));
-        //var led_ordi = document.getElementById("led-d"(score2+1));
-        led.style.backgroundColor = "orange";
+
+        if (this.score1 != undefined) {
+            var led = document.getElementById("led-g"+(this.score1+1)); 
+            led.style.backgroundColor = "orange";
+            this.score1 = this.score1 + 1 ;
+        }
+        
+        if (this.score2 != undefined) {
+            console.log(score2);
+            console.log(this.score2);
+            var led_ordi = document.getElementById("led-d"+(this.score2+1));
+            led_ordi.style.backgroundColor = "orange";
+            this.score2 = this.score2 + 1 ;
+        }
+
+        
         //led_ordi.style.backgroundColor ="orange";
-        score1 = score1 + 1 ;
+        
         //score2 = score2 + 1 ;
         
     }
@@ -145,7 +124,7 @@ function compare() {
         led.style.backgroundColor = "green";
         led_ordi.style.backgroundColor = "red";
         score1 = score1 + 1;
-        console.log(score1, score2);
+        console.log("je gagne : "+score1 +" contre : "+score2);
     }
 
     //1 pierre, 2 feuille et ciseaux
@@ -156,7 +135,8 @@ function compare() {
         led_ordi.style.backgroundColor = "green";
         led.style.backgroundColor = "red";
         score2 = score2 + 1;
-        console.log(score2, score1);
+        // console.log(score2, score1);
+        console.log("je perd : "+score1 +" contre : "+score2);
     }
 
     //si score = 3
